@@ -1,8 +1,6 @@
 package ru.otus.homework6.lesson16;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * @author Sergei on 30.11.2024 18:39.
@@ -11,9 +9,9 @@ import java.sql.SQLException;
 public class DataSourceSingltone {
 
     private Connection connection;
-    private String url = "jdbc:postgresql://192.168.10.249:5432/student";
-    private String username = "student";
-    private String password = "student";
+    private String url = "jdbc:postgresql://localhost:5432/otus";
+    private String username = "java";
+    private String password = "java";
 
     private static final DataSourceSingltone INSTANCE = new DataSourceSingltone();
 

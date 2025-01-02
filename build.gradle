@@ -10,9 +10,8 @@ repositories {
 }
 
 dependencies {
-    //testImplementation platform('org.junit:junit-bom:5.10.0')
-    //testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation 'postgresql:postgresql:9.1-901-1.jdbc4'
+    implementation 'org.postgresql:postgresql:42.7.4'
+
 }
 
 test {

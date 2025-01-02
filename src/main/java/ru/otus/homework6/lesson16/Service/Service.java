@@ -8,12 +8,9 @@ import java.sql.SQLException;
  */
 public interface Service {
 
-    void createOneHundredItems() throws SQLException;
+    void run() throws SQLException;
 
     void updatePriceX2() throws SQLException;
 
-    void truncateTable();
-
     void closeConn();
-
 }

@@ -11,11 +11,13 @@ import java.sql.SQLException;
  * @project Default (Template) Project
  */
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, InterruptedException {
         Service service = new ItemsServiceProxy();
-        service.createOneHundredItems();
+        service.run();
+        System.out.println("Сгенерировал строки");
+        Thread.sleep(5000);
         service.updatePriceX2();
-        service.truncateTable();
+        System.out.println("Обновил цену");
         service.closeConn();
     }
 }

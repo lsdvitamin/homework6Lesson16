@@ -1,7 +1,6 @@
 package ru.otus.homework6.lesson16.Service;
 
 import ru.otus.homework6.lesson16.Item;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,21 +17,10 @@ public class ItemsServiceProxy implements Service {
         items = new ArrayList<>();
     }
 
-    @Override
-    public void createOneHundredItems() throws SQLException {
-        if (service == null) {
-            service = new ItemsService();
-            service.createOneHundredItems();
-            items.addAll(service.getItems());
-        } else
-            service.readAllRowsFromItems();
-    }
-
-    @Override
     public void updatePriceX2() throws SQLException {
         if (service == null) {
             service = new ItemsService();
-            service.createOneHundredItems();
+            service.run();
             items.addAll(service.getItems());
         } else {
             service.updatePriceX2();
@@ -41,13 +29,16 @@ public class ItemsServiceProxy implements Service {
     }
 
     @Override
-    public void truncateTable() {
-        if (service != null) {
-            service.truncateTable();
+    public void run() throws SQLException {
+        if(service == null) {
+            service = new ItemsService();
+            service.run();
+            items.addAll(service.getItems());
         }
+        else
+            service.readAllRowsFromItems();
     }
 
-    @Override
     public void closeConn() {
         service.closeConn();
     }

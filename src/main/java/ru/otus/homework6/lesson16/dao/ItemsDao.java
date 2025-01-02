@@ -12,12 +12,15 @@ import java.util.List;
  * @project homework6Lesson16
  */
 public class ItemsDao {
-
-    public static DataSourceSingltone dataSourceSingltone = new DataSourceSingltone();
-    public static Connection connection = dataSourceSingltone.getConnection();
+    public static Connection connection = null;
     public static Statement statement;
     public static PreparedStatement preparedStatement;
     public static ResultSet resultSet;
+
+    public ItemsDao() {
+        connection = DataSourceSingltone.getInstance().getConnection();
+        createTable();
+    }
 
     public void createTable() {
         try {
@@ -27,11 +30,6 @@ public class ItemsDao {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public ItemsDao() {
-        connection = DataSourceSingltone.getInstance().getConnection();
-        createTable();
     }
 
     public void insert(Item item) {
